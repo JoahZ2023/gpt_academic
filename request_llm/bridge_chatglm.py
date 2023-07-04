@@ -45,7 +45,7 @@ class GetGLMHandle(Process):
                     if device=='cpu':
                         self.chatglm_model = AutoModel.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True).float()
                     else:
-                        self.chatglm_model = AutoModel.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True).half().cuda()
+                        self.chatglm_model = AutoModel.from_pretrained("THUDM/chatglm2-6b", trust_remote_code=True).quantize(4).half().cuda()
                     self.chatglm_model = self.chatglm_model.eval()
                     break
                 else:
